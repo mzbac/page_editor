@@ -1,0 +1,7 @@
+.katexContainer {
+  border: 1px solid #333333;
+  width: 100%;
+  padding: 1em;
+  position: relative;
+  margin: 0 auto;
+}

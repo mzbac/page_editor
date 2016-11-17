@@ -1,0 +1,19 @@
+.container {
+  background-color: #5890ff;
+  position: relative;
+}
+
+.container:after {
+  content: '';
+  position: absolute;
+  top: -2em;
+  left: 0;
+}
+
+.container:hover::after {
+  content: 'inline katex';
+  background-color: #FFFFFF;
+  z-index: 2000;
+  border: 1px solid #eaeaea;
+  text-align: center;
+}

@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.videoImg {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 480px) {
+  .img {
+    max-width: 300px;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) and (min-width: 481px) {
+  .img {
+    max-width: 600px;
+  }
+}
+
+​
+
+@media (min-width: 1200px) {
+}

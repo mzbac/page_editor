@@ -1,0 +1,19 @@
+.container {
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+  padding: 20px;
+  transition: background-color 0.2s ease-in-out;
+  user-select: none;
+  position: relative;
+  min-height: 100px;
+}
+
+.containerActiveTeX {
+  color: #888;
+}
+
+.btn {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}

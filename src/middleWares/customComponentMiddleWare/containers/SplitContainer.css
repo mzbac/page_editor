@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid #333333;
+  display: flex;
+  margin: 0 auto;
+}
+
+.leftContainer {
+  width: 50%;
+  border: 1px solid #333333;
+  margin: 5px;
+}
+
+.rightContainer {
+  width: 50%;
+  border: 1px solid #333333;
+  margin: 5px;
+}

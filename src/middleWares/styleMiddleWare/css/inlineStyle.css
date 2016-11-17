@@ -1,0 +1,14 @@
+.toolbar {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonWrapper {
+  line-height: 10px;
+}
+
+.inputBoxContainer {
+  display: flex;
+  justify-content: center;
+}

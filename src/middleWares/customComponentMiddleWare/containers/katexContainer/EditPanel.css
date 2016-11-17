@@ -1,0 +1,48 @@
+.editpanel {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 200;
+}
+
+.editpanel .editpanelTextValie {
+  border: 1px solid #e1e1e1;
+  display: block;
+  font-family: 'Inconsolata', 'Menlo', monospace;
+  font-size: 14px;
+  height: 110px;
+  margin: 20px auto 10px;
+  outline: none;
+  padding: 14px;
+  resize: none;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+}
+
+.btns {
+  text-align: center;
+}
+
+.saveButton,
+.cancelButton {
+  background-color: #fff;
+  border: 1px solid #333333;
+  cursor: pointer;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 10px auto;
+  padding: 6px;
+  -webkit-border-radius: 3px;
+  width: 100px;
+}
+
+.cancelButton {
+  border-color: #aaa;
+  color: #999;
+  margin-left: 8px;
+}
+
+.invalidButton {
+  background-color: #eee;
+  border-color: #a00;
+  color: #666;
+}
