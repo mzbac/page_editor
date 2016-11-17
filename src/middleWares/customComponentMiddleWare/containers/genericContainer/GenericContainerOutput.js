@@ -4,9 +4,8 @@ import styles from './GenericContainerOutput.css';
 
 export const GenericContainerOutput = (props) => {
   const { genericPanelComponent } = props;
-
   return (
-    <div className={styles.container} >
+    <div className={styles.container} key={JSON.stringify(genericPanelComponent.props)} >
       {genericPanelComponent}
     </div>
   );
