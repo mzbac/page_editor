@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 import {
   EditorState,
   convertToRaw,
+  convertFromRaw,
   CompositeDecorator,
   Entity,
   RichUtils,
 } from 'draft-js';
 import Editor, { customRichTextUtil } from '../../editor';
+import actions from '../actions';
 import { createStyleMiddleWare, createCustomComponentMiddleWare } from '../../middleWares';
 import styles from './App.css';
 const styleMiddleWare = createStyleMiddleWare();
@@ -14,11 +18,11 @@ const { DefaultToolBar } = styleMiddleWare;
 const customComponentMiddleWare = createCustomComponentMiddleWare();
 const { DefaultToolBar:CustomComponentToolBar } = customComponentMiddleWare;
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       editorState: EditorState.createEmpty(),
-      readOnly: false,
+      readOnly: true,
     };
     this._focus = () => this.editorRef.focus();
     this._onChange = (editorState) => {
@@ -44,6 +48,15 @@ class App extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { content } =nextProps;
+    this.setState({
+      editorState: content && !_.isEmpty(content) ?
+        EditorState.createWithContent(convertFromRaw(content))
+        : EditorState.createEmpty(),
+    });
+  }
+
   render() {
     const {} = this.props;
     const { editorState, readOnly } = this.state;
@@ -66,17 +79,23 @@ class App extends Component {
                 <path d="M0 0h24v24H0z" fill="none" />
               </svg>)}
           </button>
-          <button
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="24" viewBox="0 0 24 24" width="24">
-              <path d="M0 0h24v24H0z" fill="none"/>
-              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+          <button onClick={() => {
+            const { editorState } =this.state;
+            const { updateContent } =this.props;
+            const contentState = editorState.getCurrentContent();
+            const rawContent = convertToRaw(contentState);
+            updateContent(rawContent)
+          }} >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" height="24" viewBox="0 0 24 24" width="24" >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
             </svg>
           </button>
         </div>
 
-        {DefaultToolBar}
-        {CustomComponentToolBar}
+        {!readOnly && DefaultToolBar}
+        {!readOnly && CustomComponentToolBar}
         <div className={styles.container} onClick={this._focus} >
           <Editor
             key={readOnly}
@@ -96,4 +115,10 @@ class App extends Component {
   }
 }
 App.propTypes = {};
-export default App;
+function mapStateToProps(state) {
+  return {
+    content: state.content,
+  };
+}
+const { updateContent } =actions;
+export default connect(mapStateToProps, { updateContent })(App);

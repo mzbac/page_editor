@@ -1,5 +1,11 @@
 {
   "rules": {
+    "contents": {
+      "$content": {
+        ".read": true,
+        ".write": true
+      }
+    },
     "users": {
       "$user": {
         ".read": true,

@@ -33,7 +33,7 @@ class EditPanel extends Component {
       this.setState({ selectComponentName: event.target.value });
     };
     this.propsOnChange = (evt, propName) => {
-      this.setState({ [propName]: _.trim(evt.target.value) });
+      this.setState({ [propName]: evt.target.value });
     };
     this.onDone = () => {
       if (
@@ -46,7 +46,7 @@ class EditPanel extends Component {
                 Object.assign(
                   {},
                   last,
-                  { [current]: this.getCurrentProp(this.state, current) }),
+                  { [current]: (this.getCurrentProp(this.state, current) && this.getCurrentProp(this.state, current).trim()) || '' }),
               { componentName: this.state.selectComponentName })
           : null;
         onDone(config);

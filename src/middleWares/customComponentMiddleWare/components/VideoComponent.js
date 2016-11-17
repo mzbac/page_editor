@@ -41,10 +41,16 @@ class VideoComponent extends Component {
 
   _getPlayer() {
     const { videoSrc, videoType } = this.props;
-    if (toLower(videoType) === 'vimeo' || toLower(videoType) === 'youtube') {
+    if (
+      toLower(videoType) === 'vimeo'
+      || toLower(videoType) === 'youtube'
+      || this._getYoutubeId(videoSrc)
+      || this._getVimeoId(videoSrc)) {
       return (
         <div
-          data-type={toLower(videoType)}
+          data-type={toLower(videoType)
+          || this._getYoutubeId(videoSrc) ? 'youtube' : undefined
+          || this._getVimeoId(videoSrc) ? 'vimeo' : undefined}
           data-video-id={this._getYoutubeId(videoSrc) || this._getVimeoId(videoSrc)}
           ref={ref => (this.plyr = ref)}
         />
