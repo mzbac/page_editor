@@ -4,6 +4,8 @@ import {
   ImageComponent,
   VideoComponent,
   KatexComponent,
+  JumbotronComponent,
+  TextComponent,
 } from '../components';
 
 export default Map({ // eslint-disable-line new-cap
@@ -25,6 +27,19 @@ export default Map({ // eslint-disable-line new-cap
     component: KatexComponent,
     props: {
       content: '',
+    },
+  },
+  JumbotronComponent: {
+    component: JumbotronComponent,
+    props: {
+      title: '',
+      content: '',
+    },
+  },
+  TextComponent: {
+    component: TextComponent,
+    props: {
+      textContent: '',
     },
   },
 });

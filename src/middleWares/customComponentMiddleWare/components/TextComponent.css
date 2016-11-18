@@ -1,0 +1,11 @@
+.textContainer {
+    padding: 0 20px;
+}
+
+.text {
+    text-align: left;
+}
+
+@media only screen and (max-width: 480px) {
+
+}

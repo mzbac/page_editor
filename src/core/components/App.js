@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   render() {
-    const {} = this.props;
+    const { content } = this.props;
     const { editorState, readOnly } = this.state;
     return (
       <div>
@@ -98,7 +98,7 @@ class App extends Component {
         {!readOnly && CustomComponentToolBar}
         <div className={styles.container} onClick={this._focus} >
           <Editor
-            key={readOnly}
+            key={`${readOnly}${JSON.stringify(content)}`}
             editorState={editorState}
             middleWares={[styleMiddleWare, customComponentMiddleWare]}
             handleKeyCommand={this._handleKeyCommand}
