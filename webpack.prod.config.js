@@ -1,23 +1,22 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: 'source-map',
-
   entry: [
     './src/index',
   ],
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
-    publicPath: '/public/',
+    filename: 'bundle-[hash].js',
+    publicPath: '/',
   },
 
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle-[hash].css'),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
@@ -29,6 +28,10 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new HtmlWebpackPlugin({
+      template: 'index.template.ejs',
+      inject: 'body',
+    })
   ],
 
   module: {
