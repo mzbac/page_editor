@@ -10,7 +10,7 @@ it has two core parts.
 StyleMiddleWare bascally provide the style related functions, It has a lot of draft-js default styles and also includes some custom styles such as link and inline katex.
 customComponentMiddleWare provide core functions of inserting custom block into draft-js gives user power to editor content on page with desired custom component.
 
-#Get started
+#Getting Started
 
 - run `npm install` to install all the dependencies.
 - run `npm run start-dev` to start dev server.
